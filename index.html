@@ -1710,13 +1710,13 @@ button {
         </svg>
       </button>
 
-      <a class="icon-button cart-link" href="#collections"
-         aria-label="Shopping cart">
+      <a class="icon-button cart-link" href="cart.html"
+   aria-label="Shopping cart">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M5 8h14l1 13H4L5 8Z"></path>
           <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
         </svg>
-        <span class="cart-count">0</span>
+        <span class="cart-count" id="cartCount">0</span>
       </a>
 
     </div>
@@ -2227,6 +2227,81 @@ button {
       }, reducedMotion ? 0 : 350);
     }
   });
+
+  // DEMO SHOPPING CART — SAVED IN THIS BROWSER
+const CART_KEY = "aromaDemoCart";
+const cartCount = document.getElementById("cartCount");
+
+// Create a notification element.
+const cartToast = document.createElement("div");
+cartToast.className = "toast";
+cartToast.setAttribute("role", "status");
+cartToast.setAttribute("aria-live", "polite");
+document.body.appendChild(cartToast);
+
+let toastTimer;
+
+function readCart() {
+  try {
+    return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+  } catch (error) {
+    return [];
+  }
+}
+
+function updateCartCount() {
+  const total = readCart().reduce(
+    (sum, item) => sum + Number(item.quantity || 0),
+    0
+  );
+
+  if (cartCount) {
+    cartCount.textContent = total;
+  }
+}
+
+function showCartToast(message) {
+  cartToast.textContent = message;
+  cartToast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    cartToast.classList.remove("show");
+  }, 2500);
+}
+
+document.querySelectorAll(".add-cart").forEach(button => {
+  button.addEventListener("click", () => {
+    const product = {
+      id: button.dataset.productId,
+      name: button.dataset.name,
+      price: Number(button.dataset.price),
+      quantity: 1
+    };
+
+    const cart = readCart();
+    const existing = cart.find(item => item.id === product.id);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push(product);
+    }
+
+    try {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } catch (error) {
+      showCartToast("Your browser could not save the cart.");
+      return;
+    }
+
+    updateCartCount();
+    showCartToast(product.name + " added to your cart.");
+  });
+});
+
+updateCartCount();
 
   // SCROLL REVEALS
   const revealItems = document.querySelectorAll(
