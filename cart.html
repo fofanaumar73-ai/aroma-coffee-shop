@@ -767,7 +767,7 @@
           const quantity = Math.floor(Number(item.quantity));
           const itemTotal = price * quantity;
 
-          subtotal += lineTotal;
+         subtotal += itemTotal;
 
           const row = document.createElement("article");
           row.className = "cart-item";
@@ -815,11 +815,11 @@
 
           description.append(category, name, unitPrice);
 
-          const lineTotal = document.createElement("strong");
-          lineTotal.className = "item-line-total";
-          lineTotal.textContent = money(itemTotal);
+         const lineTotalElement = document.createElement("strong");
+lineTotalElement.className = "item-line-total";
+lineTotalElement.textContent = money(itemTotal);
 
-          top.append(description, lineTotal);
+top.append(description, lineTotalElement);
 
           const bottom = document.createElement("div");
           bottom.className = "item-bottom";
