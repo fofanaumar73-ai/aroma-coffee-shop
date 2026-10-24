@@ -701,11 +701,12 @@
         new Date().getFullYear();
 
       const money = amount =>
-        new Intl.NumberFormat("en-NG", {
-          style: "currency",
-          currency: "NGN",
-          maximumFractionDigits: 0
-        }).format(amount);
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(amount);
 
       function readCart() {
         try {
