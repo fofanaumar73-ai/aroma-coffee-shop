@@ -1008,6 +1008,163 @@ button {
   transition-delay: .34s;
 }
 
+  /* HOMEPAGE PRODUCT SECTION */
+.products-section {
+  background: #fbf7f1;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: #fffdf9;
+  border: 1px solid #eadfd2;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px #38251d12;
+}
+
+.product-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 4.3;
+  background: #eee3d4;
+}
+
+.product-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.product-card:hover .product-photo {
+  transform: scale(1.05);
+}
+
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 7px 10px;
+  background: #f8f3eb;
+  color: #70452f;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.product-info {
+  padding: 18px;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  color: #967a65;
+}
+
+.product-info h3 {
+  font: 500 22px var(--serif);
+  color: var(--espresso);
+  margin: 12px 0 8px;
+}
+
+.product-description {
+  min-height: 38px;
+  color: #8b7564;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.product-buy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-price {
+  font-weight: 700;
+  color: var(--espresso);
+}
+
+.add-cart {
+  border: 0;
+  padding: 12px;
+  background: var(--orange);
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.add-cart:hover {
+  background: #974622;
+}
+
+.shop-more-wrap {
+  text-align: center;
+  margin-top: 38px;
+}
+
+.button-dark {
+  background: var(--espresso);
+  color: var(--cream);
+}
+
+.toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  padding: 15px 19px;
+  background: var(--espresso);
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+  transition: .25s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    gap: 12px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 18px;
+  }
+
+  .add-cart {
+    padding: 10px 8px;
+    font-size: 9px;
+  }
+}
+
 /* ANIMATION KEYFRAMES */
 
 @keyframes cupBob {
@@ -1704,6 +1861,174 @@ button {
 
     </div>
   </section>
+
+<!-- BESTSELLERS: MAXIMUM SIX PRODUCTS -->
+<section class="products-section section-pad" id="bestsellers">
+
+  <div class="section-heading reveal">
+    <p class="eyebrow">THE AROMA FAVOURITES</p>
+    <h2>Meet your next <em>daily ritual.</em></h2>
+    <p>Discover your next favourite cup from our handpicked selection.</p>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- PRODUCT 1 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=800&q=85"
+          alt="Artisan coffee beans" loading="lazy">
+        <span class="product-tag">Bestseller</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>WHOLE BEANS</span><span>250 g</span>
+        </div>
+        <h3>Sunday Morning Blend</h3>
+        <p class="product-description">Chocolate, almond and caramel notes.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦8,500</span>
+          <button class="add-cart"
+            data-product-id="sunday-blend"
+            data-name="Sunday Morning Blend"
+            data-price="8500">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCT 2 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=85"
+          alt="Fresh coffee beans" loading="lazy">
+        <span class="product-tag">Rich & Bold</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>DARK ROAST</span><span>250 g</span>
+        </div>
+        <h3>Midnight Roast</h3>
+        <p class="product-description">Deep cocoa and roasted hazelnut.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦9,000</span>
+          <button class="add-cart"
+            data-product-id="midnight-roast"
+            data-name="Midnight Roast"
+            data-price="9000">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCT 3 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+          alt="Coffee in a ceramic cup" loading="lazy">
+        <span class="product-tag">Smooth</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>GROUND COFFEE</span><span>250 g</span>
+        </div>
+        <h3>Golden Hour Ground</h3>
+        <p class="product-description">Brown sugar with a hint of citrus.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦8,000</span>
+          <button class="add-cart"
+            data-product-id="golden-hour"
+            data-name="Golden Hour Ground"
+            data-price="8000">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCT 4 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+          alt="Coffee brewing equipment" loading="lazy">
+        <span class="product-tag">Brew Essential</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>BREW EQUIPMENT</span><span>1 piece</span>
+        </div>
+        <h3>Pour-Over Dripper</h3>
+        <p class="product-description">A simple tool for a balanced cup.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦12,500</span>
+          <button class="add-cart"
+            data-product-id="pour-over"
+            data-name="Pour-Over Dripper"
+            data-price="12500">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCT 5 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=85"
+          alt="Specialty coffee" loading="lazy">
+        <span class="product-tag">Light Roast</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>SINGLE ORIGIN</span><span>250 g</span>
+        </div>
+        <h3>Sunrise Single Origin</h3>
+        <p class="product-description">Floral aromas and bright berry notes.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦9,500</span>
+          <button class="add-cart"
+            data-product-id="sunrise-origin"
+            data-name="Sunrise Single Origin"
+            data-price="9500">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCT 6 -->
+    <article class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img class="product-photo"
+          src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=85"
+          alt="Freshly prepared coffee" loading="lazy">
+        <span class="product-tag">Customer Favourite</span>
+      </div>
+      <div class="product-info">
+        <div class="product-meta">
+          <span>GROUND COFFEE</span><span>250 g</span>
+        </div>
+        <h3>House Comfort Blend</h3>
+        <p class="product-description">Warm spice and mellow chocolate notes.</p>
+        <div class="product-buy-row">
+          <span class="product-price">₦8,500</span>
+          <button class="add-cart"
+            data-product-id="comfort-blend"
+            data-name="House Comfort Blend"
+            data-price="8500">ADD TO CART</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="shop-more-wrap reveal">
+    <p>Still exploring? There’s more coffee waiting for you.</p>
+    <a class="button button-dark" href="shop.html">
+      Explore All Products <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+</section>
+
+
 
   <!-- BRAND STORY -->
 
