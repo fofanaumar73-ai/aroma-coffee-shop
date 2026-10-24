@@ -1,0 +1,1434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#21140f">
+  <meta name="description" content="Explore artisan coffee, signature blends and brewing essentials at Aroma Coffee.">
+  <title>Shop Coffee — Aroma Coffee</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f3eb;
+      --espresso: #21140f;
+      --brown: #38251d;
+      --roast: #70452f;
+      --orange: #b85e32;
+      --caramel: #e49a52;
+      --sand: #e8d8c4;
+      --muted: #8b7564;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --page-pad: clamp(20px, 6vw, 90px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button, a, select {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 4px;
+    }
+
+    /* HEADER */
+
+    .announcement {
+      padding: 10px var(--page-pad);
+      background: #633719;
+      color: #f6e5d2;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .announcement span:last-child {
+      color: #e4c5a4;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 82px;
+      padding: 15px var(--page-pad);
+      background: var(--espresso);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      box-shadow: 0 5px 22px #160d081a;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      color: var(--caramel);
+      font-size: 36px;
+      display: inline-block;
+      transform: rotate(-35deg);
+    }
+
+    .brand-name {
+      font: 500 20px/1 var(--serif);
+      letter-spacing: .15em;
+    }
+
+    .brand-name small {
+      display: block;
+      font: 500 9px var(--sans);
+      letter-spacing: .42em;
+      margin-top: 6px;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(15px, 2.5vw, 34px);
+    }
+
+    .main-nav a {
+      font-size: 11px;
+      color: #e5d8cc;
+      transition: color .2s;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--caramel);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cart-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cream);
+      font-size: 11px;
+    }
+
+    .cart-icon-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .cart-link svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -9px;
+      width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 5px 0;
+      background: var(--cream);
+      transition: transform .2s;
+    }
+
+    /* SHOP HERO */
+
+    .shop-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      padding: 60px var(--page-pad);
+      background:
+        linear-gradient(90deg, #21140f 0%, #21140fe8 47%, #21140f65 100%),
+        url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1800&q=85") center 53% / cover;
+      color: var(--cream);
+    }
+
+    .shop-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 630px;
+    }
+
+    .eyebrow {
+      color: var(--caramel);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      margin: 0 0 18px;
+    }
+
+    .shop-hero h1 {
+      margin: 0;
+      font: 500 clamp(43px, 6vw, 72px)/1.05 var(--serif);
+      letter-spacing: -.04em;
+    }
+
+    .shop-hero h1 em {
+      color: var(--caramel);
+      font-weight: 500;
+    }
+
+    .shop-hero-copy {
+      max-width: 410px;
+      color: #dfcdbb;
+      font-size: 13px;
+      line-height: 1.9;
+      margin: 19px 0 0;
+    }
+
+    .hero-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 27px;
+      color: #e5d4c2;
+      font-size: 11px;
+      transition: color .2s;
+    }
+
+    .hero-back:hover {
+      color: var(--caramel);
+    }
+
+    /* SHOP MAIN */
+
+    .shop-main {
+      padding: 75px var(--page-pad) 100px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--espresso);
+      font: 500 clamp(32px, 4vw, 48px)/1.15 var(--serif);
+      letter-spacing: -.03em;
+    }
+
+    .section-heading h2 em {
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    .result-count {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* SEARCH AND FILTERS */
+
+    .shop-toolbar {
+      display: grid;
+      grid-template-columns: minmax(200px, 1.5fr) minmax(145px, .7fr) minmax(155px, .7fr);
+      gap: 12px;
+      margin-bottom: 25px;
+      padding: 17px;
+      background: #eee3d4;
+      border: 1px solid #e2d2c0;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      width: 19px;
+      height: 19px;
+      transform: translateY(-50%);
+      stroke: #8b7564;
+      fill: none;
+      stroke-width: 1.7;
+      pointer-events: none;
+    }
+
+    .search-input,
+    .toolbar-select {
+      width: 100%;
+      min-height: 47px;
+      border: 1px solid #ddcbb8;
+      border-radius: 0;
+      background: #fffdf9;
+      color: var(--brown);
+      font-size: 12px;
+    }
+
+    .search-input {
+      padding: 0 14px 0 43px;
+    }
+
+    .search-input::placeholder {
+      color: #a18a77;
+    }
+
+    .toolbar-select {
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    .category-filters {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 34px;
+    }
+
+    .filter-button {
+      padding: 11px 17px;
+      border: 1px solid #deccba;
+      background: transparent;
+      color: #785c49;
+      font-size: 10px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      background: var(--espresso);
+      border-color: var(--espresso);
+      color: var(--cream);
+    }
+
+    /* PRODUCT GRID */
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px 20px;
+    }
+
+    .product-card {
+      min-width: 0;
+      background: #fffdf9;
+      border: 1px solid #eadfd2;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px #38251d12;
+    }
+
+    .product-photo-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #eee3d4;
+      aspect-ratio: 4 / 4.5;
+    }
+
+    .product-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+
+    .product-card:hover .product-photo {
+      transform: scale(1.05);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      max-width: calc(100% - 24px);
+      padding: 7px 9px;
+      background: var(--cream);
+      color: var(--roast);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 17px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: #967a65;
+      font-size: 9px;
+      letter-spacing: .07em;
+    }
+
+    .product-info h3 {
+      min-height: 46px;
+      margin: 12px 0 7px;
+      font: 500 20px/1.25 var(--serif);
+      color: var(--espresso);
+    }
+
+    .product-description {
+      min-height: 37px;
+      margin: 0 0 16px;
+      color: #8b7564;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .product-buy-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 13px;
+      border-top: 1px solid #eee4d8;
+    }
+
+    .product-price {
+      color: var(--espresso);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .add-cart {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 0 11px;
+      border: 0;
+      background: var(--orange);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .add-cart:hover {
+      background: #974622;
+      transform: translateY(-2px);
+    }
+
+    .add-cart svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+    }
+
+    /* EMPTY SEARCH RESULTS */
+
+    .no-results {
+      padding: 70px 20px;
+      text-align: center;
+      border: 1px dashed #d9c6b2;
+      background: #fffaf4;
+    }
+
+    .no-results h3 {
+      margin: 0 0 12px;
+      color: var(--espresso);
+      font: 500 29px var(--serif);
+    }
+
+    .no-results p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .reset-button {
+      margin-top: 10px;
+      padding: 13px 20px;
+      border: 0;
+      background: var(--orange);
+      color: white;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* BOTTOM CTA */
+
+    .shop-note {
+      margin-top: 80px;
+      padding: 55px 25px;
+      text-align: center;
+      background: #eee3d4;
+    }
+
+    .shop-note .eyebrow {
+      color: var(--orange);
+    }
+
+    .shop-note h2 {
+      margin: 0 0 15px;
+      font: 500 clamp(31px, 4vw, 45px)/1.2 var(--serif);
+      color: var(--espresso);
+    }
+
+    .shop-note h2 em {
+      color: var(--orange);
+    }
+
+    .shop-note p {
+      max-width: 440px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .text-link {
+      display: inline-flex;
+      gap: 10px;
+      margin-top: 23px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--orange);
+      color: var(--brown);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 200;
+      max-width: calc(100% - 44px);
+      padding: 16px 20px;
+      background: var(--espresso);
+      color: white;
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: 0 8px 25px #0002;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .25s, transform .25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      padding: 38px var(--page-pad);
+      background: #160d08;
+      color: #e8d8c4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #bba18b;
+      font-size: 10px;
+    }
+
+    .footer-note {
+      color: #d5c0ab;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1050px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .main-nav {
+        gap: 15px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        min-height: 72px;
+        gap: 10px;
+      }
+
+      .menu-toggle {
+        display: block;
+        order: 3;
+      }
+
+      .header-actions {
+        margin-left: auto;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 22px;
+        background: var(--espresso);
+        transition: max-height .3s ease, padding .3s ease;
+      }
+
+      .main-nav.is-open {
+        max-height: 300px;
+        padding: 8px 22px 20px;
+      }
+
+      .main-nav a {
+        padding: 14px 0;
+        border-bottom: 1px solid #ffffff18;
+      }
+
+      .shop-toolbar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-wrap {
+        grid-column: 1 / -1;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 13px;
+      }
+
+      .product-info {
+        padding: 13px;
+      }
+
+      .product-info h3 {
+        font-size: 18px;
+      }
+
+      .product-buy-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .add-cart {
+        width: 100%;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .result-count {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --page-pad: 19px;
+      }
+
+      .announcement {
+        justify-content: center;
+        text-align: center;
+        font-size: 9px;
+      }
+
+      .announcement span:last-child {
+        display: none;
+      }
+
+      .brand-mark {
+        font-size: 29px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .cart-link > span:last-child {
+        font-size: 10px;
+      }
+
+      .shop-hero {
+        min-height: 290px;
+        padding-top: 45px;
+        padding-bottom: 45px;
+      }
+
+      .shop-hero h1 {
+        font-size: 45px;
+      }
+
+      .shop-main {
+        padding-top: 52px;
+        padding-bottom: 65px;
+      }
+
+      .shop-toolbar {
+        padding: 11px;
+        gap: 8px;
+      }
+
+      .toolbar-select {
+        font-size: 10px;
+        padding: 0 7px;
+      }
+
+      .filter-button {
+        padding: 10px 12px;
+        font-size: 9px;
+      }
+
+      .product-tag {
+        top: 8px;
+        left: 8px;
+        padding: 6px;
+        font-size: 7px;
+      }
+
+      .product-info h3 {
+        font-size: 17px;
+        min-height: 42px;
+      }
+
+      .product-description {
+        font-size: 9px;
+      }
+
+      .product-price {
+        font-size: 12px;
+      }
+
+      .shop-note {
+        margin-top: 50px;
+        padding: 43px 20px;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    <span>✦ Freshly roasted. Delivered to your door.</span>
+    <span>Small-batch coffee, big moments.</span>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Aroma Coffee home">
+      <span class="brand-mark" aria-hidden="true">❧</span>
+      <span class="brand-name">
+        AROMA
+        <small>COFFEE</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop Coffee</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="cart-link" href="cart.html" aria-label="Shopping cart">
+        <span class="cart-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 8h14l1 13H4L5 8Z"></path>
+            <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </span>
+        <span>Cart</span>
+      </a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle"
+      type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- SHOP HERO -->
+  <section class="shop-hero">
+    <div class="shop-hero-content">
+      <a href="index.html" class="hero-back">
+        <span aria-hidden="true">←</span> Back to home
+      </a>
+      <p class="eyebrow">THE AROMA COLLECTION</p>
+      <h1>Find your kind<br>of <em>coffee.</em></h1>
+      <p class="shop-hero-copy">
+        From comforting everyday blends to the little tools that
+        make brewing special, find something worth slowing down for.
+      </p>
+    </div>
+  </section>
+
+  <!-- SHOP CATALOGUE -->
+  <main class="shop-main" id="catalogue">
+
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">GOOD THINGS, BREWING</p>
+        <h2>Shop our <em>collection.</em></h2>
+      </div>
+      <span class="result-count" id="resultCount" aria-live="polite">
+        Showing 10 products
+      </span>
+    </div>
+
+    <!-- SEARCH, CATEGORY FILTER AND SORT -->
+    <div class="shop-toolbar">
+      <label class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"></circle>
+          <path d="m16 16 5 5"></path>
+        </svg>
+        <input class="search-input" id="searchInput"
+          type="search" placeholder="Search coffee, blends, equipment..."
+          aria-label="Search products">
+      </label>
+
+      <label>
+        <select class="toolbar-select" id="categorySelect"
+          aria-label="Filter products by category">
+          <option value="all">All categories</option>
+          <option value="whole-beans">Whole beans</option>
+          <option value="ground-coffee">Ground coffee</option>
+          <option value="equipment">Brew essentials</option>
+        </select>
+      </label>
+
+      <label>
+        <select class="toolbar-select" id="sortSelect"
+          aria-label="Sort products">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-low">Price: Low to high</option>
+          <option value="price-high">Price: High to low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="category-filters" aria-label="Quick category filters">
+      <button class="filter-button active" data-category="all" type="button">All Products</button>
+      <button class="filter-button" data-category="whole-beans" type="button">Whole Beans</button>
+      <button class="filter-button" data-category="ground-coffee" type="button">Ground Coffee</button>
+      <button class="filter-button" data-category="equipment" type="button">Brew Essentials</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+
+      <!-- PRODUCT 1 -->
+      <article class="product-card"
+        data-id="sunday-blend" data-name="Sunday Morning Blend"
+        data-category="whole-beans" data-price="8500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee beans for Sunday Morning Blend" loading="lazy">
+          <span class="product-tag">Bestseller</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>WHOLE BEANS</span><span>250 g</span></div>
+          <h3>Sunday Morning Blend</h3>
+          <p class="product-description">Chocolate, almond and caramel notes.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦8,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="sunday-blend" data-name="Sunday Morning Blend"
+              data-price="8500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2 -->
+      <article class="product-card"
+        data-id="midnight-roast" data-name="Midnight Roast"
+        data-category="whole-beans" data-price="9000">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=85"
+            alt="Freshly roasted coffee beans" loading="lazy">
+          <span class="product-tag">Rich & Bold</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>DARK ROAST</span><span>250 g</span></div>
+          <h3>Midnight Roast</h3>
+          <p class="product-description">Deep cocoa and roasted hazelnut.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦9,000</span>
+            <button class="add-cart" type="button"
+              data-product-id="midnight-roast" data-name="Midnight Roast"
+              data-price="9000">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 3 -->
+      <article class="product-card"
+        data-id="golden-hour" data-name="Golden Hour Ground"
+        data-category="ground-coffee" data-price="8000">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+            alt="Freshly brewed coffee in a ceramic cup" loading="lazy">
+          <span class="product-tag">Smooth</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>GROUND COFFEE</span><span>250 g</span></div>
+          <h3>Golden Hour Ground</h3>
+          <p class="product-description">Brown sugar with a hint of citrus.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦8,000</span>
+            <button class="add-cart" type="button"
+              data-product-id="golden-hour" data-name="Golden Hour Ground"
+              data-price="8000">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 4 -->
+      <article class="product-card"
+        data-id="pour-over" data-name="Pour-Over Dripper"
+        data-category="equipment" data-price="12500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee brewing equipment" loading="lazy">
+          <span class="product-tag">Brew Essential</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>EQUIPMENT</span><span>1 piece</span></div>
+          <h3>Pour-Over Dripper</h3>
+          <p class="product-description">A simple tool for a balanced cup.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦12,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="pour-over" data-name="Pour-Over Dripper"
+              data-price="12500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 5 -->
+      <article class="product-card"
+        data-id="sunrise-origin" data-name="Sunrise Single Origin"
+        data-category="whole-beans" data-price="9500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=85"
+            alt="Specialty coffee served fresh" loading="lazy">
+          <span class="product-tag">Light Roast</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>SINGLE ORIGIN</span><span>250 g</span></div>
+          <h3>Sunrise Single Origin</h3>
+          <p class="product-description">Floral aromas and bright berry notes.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦9,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="sunrise-origin" data-name="Sunrise Single Origin"
+              data-price="9500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 6 -->
+      <article class="product-card"
+        data-id="comfort-blend" data-name="House Comfort Blend"
+        data-category="ground-coffee" data-price="8500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=85"
+            alt="A comforting freshly prepared coffee" loading="lazy">
+          <span class="product-tag">House Favourite</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>GROUND COFFEE</span><span>250 g</span></div>
+          <h3>House Comfort Blend</h3>
+          <p class="product-description">Warm spice and mellow chocolate notes.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦8,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="comfort-blend" data-name="House Comfort Blend"
+              data-price="8500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 7 -->
+      <article class="product-card"
+        data-id="velvet-espresso" data-name="Velvet Espresso Blend"
+        data-category="whole-beans" data-price="10500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee beans for espresso" loading="lazy">
+          <span class="product-tag">Espresso Blend</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>WHOLE BEANS</span><span>250 g</span></div>
+          <h3>Velvet Espresso Blend</h3>
+          <p class="product-description">Full-bodied with a smooth, rich finish.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦10,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="velvet-espresso" data-name="Velvet Espresso Blend"
+              data-price="10500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 8 -->
+      <article class="product-card"
+        data-id="morning-ground" data-name="Easy Morning Ground"
+        data-category="ground-coffee" data-price="7500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+            alt="Morning coffee in a cup" loading="lazy">
+          <span class="product-tag">Everyday Favourite</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>GROUND COFFEE</span><span>250 g</span></div>
+          <h3>Easy Morning Ground</h3>
+          <p class="product-description">An easy-drinking cup with gentle sweetness.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦7,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="morning-ground" data-name="Easy Morning Ground"
+              data-price="7500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 9 -->
+      <article class="product-card"
+        data-id="french-press" data-name="Classic French Press"
+        data-category="equipment" data-price="18500">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee brewing setup" loading="lazy">
+          <span class="product-tag">Brew Essential</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>EQUIPMENT</span><span>1 piece</span></div>
+          <h3>Classic French Press</h3>
+          <p class="product-description">A timeless way to make a full-bodied brew.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦18,500</span>
+            <button class="add-cart" type="button"
+              data-product-id="french-press" data-name="Classic French Press"
+              data-price="18500">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 10 -->
+      <article class="product-card"
+        data-id="cocoa-ground" data-name="Cocoa House Ground"
+        data-category="ground-coffee" data-price="8200">
+        <div class="product-photo-wrap">
+          <img class="product-photo"
+            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee prepared for a relaxing moment" loading="lazy">
+          <span class="product-tag">Chocolate Notes</span>
+        </div>
+        <div class="product-info">
+          <div class="product-meta"><span>GROUND COFFEE</span><span>250 g</span></div>
+          <h3>Cocoa House Ground</h3>
+          <p class="product-description">Comforting cocoa notes and a rounded finish.</p>
+          <div class="product-buy-row">
+            <span class="product-price">₦8,200</span>
+            <button class="add-cart" type="button"
+              data-product-id="cocoa-ground" data-name="Cocoa House Ground"
+              data-price="8200">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="no-results hidden" id="noResults">
+      <h3>No coffee found just yet.</h3>
+      <p>Try another search or choose a different category.</p>
+      <button class="reset-button" id="resetFilters" type="button">
+        Show All Products
+      </button>
+    </div>
+
+    <section class="shop-note">
+      <p class="eyebrow">A LITTLE MORE AROMA</p>
+      <h2>Good coffee. <em>Better moments.</em></h2>
+      <p>
+        Every cup can become a ritual worth looking forward to.
+        Find your blend and make the everyday feel special.
+      </p>
+      <a class="text-link" href="index.html#story">
+        Discover our story <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">❧</span>
+      <span class="brand-name">
+        AROMA
+        <small>COFFEE</small>
+      </span>
+    </a>
+
+    <span class="footer-note">Thoughtfully sourced. Beautifully brewed.</span>
+    <span class="footer-copy">
+      © <span id="year"></span> Aroma Coffee. Demo storefront.
+    </span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const CART_KEY = "aromaDemoCart";
+
+      const cartCount = document.getElementById("cartCount");
+      const searchInput = document.getElementById("searchInput");
+      const categorySelect = document.getElementById("categorySelect");
+      const sortSelect = document.getElementById("sortSelect");
+      const filterButtons = document.querySelectorAll(".filter-button");
+      const productGrid = document.getElementById("productGrid");
+      const productCards = Array.from(
+        document.querySelectorAll(".product-card")
+      );
+      const resultCount = document.getElementById("resultCount");
+      const noResults = document.getElementById("noResults");
+      const toast = document.getElementById("toast");
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+      let toastTimer;
+
+      function readCart() {
+        try {
+          const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+          return Array.isArray(cart) ? cart : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function updateCartCount() {
+        const count = readCart().reduce(
+          (sum, item) => sum + Math.max(0, Number(item.quantity) || 0),
+          0
+        );
+
+        cartCount.textContent = count;
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      // Add to cart. Uses the same key as index.html and cart.html.
+      document.querySelectorAll(".add-cart").forEach(button => {
+        button.addEventListener("click", () => {
+          const product = {
+            id: button.dataset.productId,
+            name: button.dataset.name,
+            price: Number(button.dataset.price),
+            quantity: 1
+          };
+
+          const cart = readCart();
+          const existing = cart.find(item => item.id === product.id);
+
+          if (existing) {
+            existing.quantity = Number(existing.quantity || 0) + 1;
+          } else {
+            cart.push(product);
+          }
+
+          try {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+          } catch (error) {
+            showToast("Your browser could not save the cart.");
+            return;
+          }
+
+          updateCartCount();
+          showToast(product.name + " added to your cart.");
+        });
+      });
+
+      // Search, category filtering and sorting.
+      function applyFilters() {
+        const query = searchInput.value.trim().toLowerCase();
+        const category = categorySelect.value;
+        const sort = sortSelect.value;
+
+        const visibleCards = productCards.filter(card => {
+          const name = card.dataset.name.toLowerCase();
+          const cardCategory = card.dataset.category;
+          const text = card.textContent.toLowerCase();
+
+          const matchesSearch =
+            name.includes(query) || text.includes(query);
+
+          const matchesCategory =
+            category === "all" || cardCategory === category;
+
+          return matchesSearch && matchesCategory;
+        });
+
+        visibleCards.sort((a, b) => {
+          const priceA = Number(a.dataset.price);
+          const priceB = Number(b.dataset.price);
+          const nameA = a.dataset.name;
+          const nameB = b.dataset.name;
+
+          if (sort === "price-low") return priceA - priceB;
+          if (sort === "price-high") return priceB - priceA;
+          if (sort === "name") return nameA.localeCompare(nameB);
+
+          return productCards.indexOf(a) - productCards.indexOf(b);
+        });
+
+        productCards.forEach(card => {
+          card.classList.add("hidden");
+        });
+
+        visibleCards.forEach(card => {
+          card.classList.remove("hidden");
+          productGrid.appendChild(card);
+        });
+
+        noResults.classList.toggle("hidden", visibleCards.length !== 0);
+        productGrid.classList.toggle("hidden", visibleCards.length === 0);
+
+        resultCount.textContent =
+          "Showing " + visibleCards.length +
+          (visibleCards.length === 1 ? " product" : " products");
+
+        filterButtons.forEach(button => {
+          button.classList.toggle(
+            "active",
+            button.dataset.category === category
+          );
+        });
+      }
+
+      searchInput.addEventListener("input", applyFilters);
+      categorySelect.addEventListener("change", applyFilters);
+      sortSelect.addEventListener("change", applyFilters);
+
+      filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          categorySelect.value = button.dataset.category;
+          applyFilters();
+        });
+      });
+
+      document.getElementById("resetFilters").addEventListener("click", () => {
+        searchInput.value = "";
+        categorySelect.value = "all";
+        sortSelect.value = "featured";
+        applyFilters();
+      });
+
+      // Mobile navigation.
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          menuToggle.getAttribute("aria-expanded") === "true";
+
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen ? "Open navigation" : "Close navigation"
+        );
+
+        mainNav.classList.toggle("is-open", !isOpen);
+      });
+
+      mainNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Open navigation");
+        });
+      });
+
+      // Keep the count fresh if another page changes the cart.
+      window.addEventListener("storage", event => {
+        if (event.key === CART_KEY) updateCartCount();
+      });
+
+      updateCartCount();
+      applyFilters();
+    })();
+  </script>
+
+</body>
+</html>
