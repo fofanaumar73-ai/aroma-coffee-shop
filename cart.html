@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#21140f">
+  <meta name="description" content="Review your Aroma Coffee selections.">
+  <title>Your Cart — Aroma Coffee</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f8f3eb;
+      --espresso: #21140f;
+      --brown: #38251d;
+      --roast: #70452f;
+      --orange: #b85e32;
+      --caramel: #e49a52;
+      --sand: #e8d8c4;
+      --muted: #8b7564;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --page-pad: clamp(20px, 6vw, 90px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body, button, input {
+      font-family: var(--sans);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* STICKY HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px var(--page-pad);
+      background: var(--espresso);
+      color: var(--cream);
+      box-shadow: 0 5px 22px #160d081a;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .brand-mark {
+      font-size: 37px;
+      color: var(--caramel);
+      transform: rotate(-35deg);
+      display: inline-block;
+    }
+
+    .brand-name {
+      font: 500 20px/1 var(--serif);
+      letter-spacing: .15em;
+    }
+
+    .brand-name small {
+      display: block;
+      font: 500 9px var(--sans);
+      letter-spacing: .42em;
+      margin-top: 6px;
+    }
+
+    .header-cart {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      color: #ead8c6;
+    }
+
+    .cart-count {
+      width: 23px;
+      height: 23px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-size: 10px;
+    }
+
+    /* BACK ARROW */
+
+    .back-row {
+      padding: 25px var(--page-pad) 0;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--roast);
+      font-size: 12px;
+      font-weight: 700;
+      transition: color .2s, transform .2s;
+    }
+
+    .back-link:hover {
+      color: var(--orange);
+      transform: translateX(-3px);
+    }
+
+    .back-circle {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #d9c6b2;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* PAGE INTRO */
+
+    .cart-heading {
+      padding: 48px var(--page-pad) 38px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      margin: 0 0 14px;
+    }
+
+    .cart-heading h1 {
+      font: 500 clamp(42px, 6vw, 70px)/1.05 var(--serif);
+      letter-spacing: -.04em;
+      color: var(--espresso);
+      margin: 0 0 13px;
+    }
+
+    .cart-heading h1 em {
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    .cart-heading > p:last-child {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* CART LAYOUT */
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(280px, .8fr);
+      gap: 35px;
+      align-items: start;
+      padding: 0 var(--page-pad) 100px;
+    }
+
+    .cart-items-panel,
+    .summary-panel {
+      background: #fffdf9;
+      border: 1px solid #eadfd2;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 23px;
+      border-bottom: 1px solid #eee4d8;
+    }
+
+    .panel-heading h2 {
+      margin: 0;
+      color: var(--espresso);
+      font: 500 23px var(--serif);
+    }
+
+    .items-label {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 20px;
+      padding: 24px;
+      border-bottom: 1px solid #eee4d8;
+    }
+
+    .cart-item:last-child {
+      border-bottom: 0;
+    }
+
+    .item-image {
+      width: 110px;
+      height: 125px;
+      object-fit: cover;
+      background: var(--sand);
+    }
+
+    .item-details {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .item-category {
+      color: var(--orange);
+      font-size: 9px;
+      letter-spacing: .15em;
+      font-weight: 700;
+    }
+
+    .item-name {
+      font: 500 21px/1.3 var(--serif);
+      color: var(--espresso);
+      margin: 7px 0;
+    }
+
+    .item-unit-price {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .item-line-total {
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .remove-button {
+      border: 0;
+      background: transparent;
+      color: #9b8070;
+      font-size: 11px;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 5px 0;
+    }
+
+    .remove-button:hover {
+      color: var(--orange);
+    }
+
+    .item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .quantity-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #dfcdbb;
+      min-height: 37px;
+    }
+
+    .quantity-control button {
+      width: 36px;
+      height: 35px;
+      border: 0;
+      background: #f7efe5;
+      color: var(--espresso);
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .quantity-control button:hover {
+      background: var(--sand);
+    }
+
+    .quantity-control span {
+      min-width: 34px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* SUMMARY */
+
+    .summary-panel {
+      position: sticky;
+      top: 105px;
+    }
+
+    .summary-content {
+      padding: 24px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .summary-row strong {
+      color: var(--brown);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .summary-total {
+      border-top: 1px solid #e9dccd;
+      padding-top: 21px;
+      margin-top: 25px;
+      color: var(--espresso);
+      font-size: 14px;
+    }
+
+    .summary-total strong {
+      font-size: 22px;
+      font-family: var(--serif);
+    }
+
+    .delivery-note {
+      padding: 14px;
+      margin: 22px 0;
+      background: #f4ece1;
+      color: #7e614c;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .checkout-button,
+    .continue-button {
+      min-height: 51px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 0;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      transition: background .2s, transform .2s;
+    }
+
+    .checkout-button {
+      background: var(--orange);
+      color: white;
+    }
+
+    .checkout-button:hover {
+      background: #974622;
+      transform: translateY(-2px);
+    }
+
+    .checkout-button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .continue-button {
+      margin-top: 12px;
+      background: transparent;
+      border: 1px solid #d9c6b2;
+      color: var(--brown);
+    }
+
+    .continue-button:hover {
+      background: #f4ece1;
+    }
+
+    .summary-footnote {
+      color: #9b8471;
+      font-size: 10px;
+      line-height: 1.7;
+      text-align: center;
+      margin: 17px 0 0;
+    }
+
+    /* EMPTY CART */
+
+    .empty-cart {
+      padding: 65px 25px;
+      text-align: center;
+    }
+
+    .empty-icon {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 23px;
+      border-radius: 50%;
+      background: #f2e7d9;
+      color: var(--orange);
+      font-size: 31px;
+    }
+
+    .empty-cart h2 {
+      font: 500 31px var(--serif);
+      color: var(--espresso);
+      margin: 0 0 12px;
+    }
+
+    .empty-cart p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0 auto 25px;
+      max-width: 330px;
+    }
+
+    .empty-cart .checkout-button {
+      width: auto;
+      padding: 0 24px;
+      margin: auto;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      padding: 35px var(--page-pad);
+      background: #160d08;
+      color: #e8d8c4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy,
+    .footer-note {
+      color: #bba18b;
+      font-size: 10px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .cart-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .summary-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 520px) {
+      :root {
+        --page-pad: 20px;
+      }
+
+      .site-header {
+        min-height: 70px;
+      }
+
+      .brand-mark {
+        font-size: 30px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .header-cart > span:first-child {
+        display: none;
+      }
+
+      .cart-heading {
+        padding-top: 35px;
+      }
+
+      .cart-item {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 13px;
+        padding: 16px;
+      }
+
+      .item-image {
+        width: 82px;
+        height: 100px;
+      }
+
+      .item-name {
+        font-size: 17px;
+      }
+
+      .item-top {
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .item-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .item-line-total {
+        font-size: 12px;
+      }
+
+      .panel-heading,
+      .summary-content {
+        padding: 18px;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Aroma Coffee home">
+      <span class="brand-mark" aria-hidden="true">❧</span>
+      <span class="brand-name">
+        AROMA
+        <small>COFFEE</small>
+      </span>
+    </a>
+
+    <a class="header-cart" href="cart.html" aria-label="Your shopping cart">
+      <span>YOUR CART</span>
+      <span class="cart-count" id="headerCartCount">0</span>
+    </a>
+  </header>
+
+  <!-- BACK ARROW AT THE TOP -->
+  <div class="back-row">
+    <a class="back-link" href="index.html">
+      <span class="back-circle" aria-hidden="true">←</span>
+      <span>Back to shopping</span>
+    </a>
+  </div>
+
+  <!-- PAGE TITLE -->
+  <section class="cart-heading">
+    <p class="eyebrow">YOUR AROMA SELECTION</p>
+    <h1>Your shopping <em>bag.</em></h1>
+    <p>Good coffee is closer than you think. Review your selection below.</p>
+  </section>
+
+  <!-- CART AND ORDER SUMMARY -->
+  <main class="cart-layout">
+
+    <section class="cart-items-panel" aria-label="Items in your cart">
+      <div class="panel-heading">
+        <h2>Your items</h2>
+        <span class="items-label" id="itemsLabel">0 items</span>
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="empty-cart hidden" id="emptyCart">
+        <div class="empty-icon" aria-hidden="true">☕</div>
+        <h2>Your bag is taking a break.</h2>
+        <p>Looks like you haven't picked your coffee yet. Let's find something you'll love.</p>
+        <a class="checkout-button" href="index.html#bestsellers">
+          Explore Our Coffee <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <aside class="summary-panel" aria-label="Order summary">
+      <div class="panel-heading">
+        <h2>Order summary</h2>
+      </div>
+
+      <div class="summary-content">
+        <div class="summary-row">
+          <span>Items subtotal</span>
+          <strong id="subtotal">₦0</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Delivery</span>
+          <strong id="delivery">Calculated later</strong>
+        </div>
+
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <strong id="total">₦0</strong>
+        </div>
+
+        <div class="delivery-note">
+          ✦ Delivery costs will be confirmed during the demo checkout. No payment is collected on this site.
+        </div>
+
+        <button class="checkout-button" id="checkoutButton" disabled>
+          Continue to Checkout <span aria-hidden="true">↗</span>
+        </button>
+
+        <a class="continue-button" href="shop.html">
+          Continue Shopping
+        </a>
+
+        <p class="summary-footnote">
+          This is a demo storefront. No real order or payment will be made.
+        </p>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">❧</span>
+      <span class="brand-name">
+        AROMA
+        <small>COFFEE</small>
+      </span>
+    </a>
+
+    <span class="footer-note">Thoughtfully sourced. Beautifully brewed.</span>
+
+    <span class="footer-copy">
+      © <span id="year"></span> Aroma Coffee. Demo storefront.
+    </span>
+  </footer>
+
+  <script>
+    (() => {
+      const CART_KEY = "aromaDemoCart";
+
+      const cartItems = document.getElementById("cartItems");
+      const emptyCart = document.getElementById("emptyCart");
+      const itemsLabel = document.getElementById("itemsLabel");
+      const headerCartCount = document.getElementById("headerCartCount");
+      const subtotalElement = document.getElementById("subtotal");
+      const totalElement = document.getElementById("total");
+      const checkoutButton = document.getElementById("checkoutButton");
+
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+      const money = amount =>
+        new Intl.NumberFormat("en-NG", {
+          style: "currency",
+          currency: "NGN",
+          maximumFractionDigits: 0
+        }).format(amount);
+
+      function readCart() {
+        try {
+          const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+          return Array.isArray(cart) ? cart : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveCart(cart) {
+        try {
+          localStorage.setItem(CART_KEY, JSON.stringify(cart));
+          return true;
+        } catch (error) {
+          alert("Your browser could not save the cart. Please check browser storage settings.");
+          return false;
+        }
+      }
+
+      function updateCount(cart) {
+        const count = cart.reduce(
+          (sum, item) => sum + Math.max(0, Number(item.quantity) || 0),
+          0
+        );
+
+        headerCartCount.textContent = count;
+        itemsLabel.textContent =
+          count + (count === 1 ? " item" : " items");
+      }
+
+      function renderCart() {
+        const cart = readCart();
+
+        cartItems.innerHTML = "";
+
+        const validCart = cart.filter(item =>
+          item &&
+          typeof item.id === "string" &&
+          typeof item.name === "string" &&
+          Number.isFinite(Number(item.price)) &&
+          Number(item.price) >= 0 &&
+          Number(item.quantity) > 0
+        );
+
+        updateCount(validCart);
+
+        const isEmpty = validCart.length === 0;
+
+        emptyCart.classList.toggle("hidden", !isEmpty);
+        cartItems.classList.toggle("hidden", isEmpty);
+        checkoutButton.disabled = isEmpty;
+
+        let subtotal = 0;
+
+        validCart.forEach(item => {
+          const price = Number(item.price);
+          const quantity = Math.floor(Number(item.quantity));
+          const lineTotal = price * quantity;
+
+          subtotal += lineTotal;
+
+          const row = document.createElement("article");
+          row.className = "cart-item";
+
+          const image = document.createElement("img");
+          image.className = "item-image";
+          image.alt = item.name;
+          image.loading = "lazy";
+
+          // Product photos match the demo product IDs on index.html.
+          const productImages = {
+            "sunday-blend": "photo-1559525839-b184a4d698c7",
+            "midnight-roast": "photo-1442512595331-e89e73853f31",
+            "golden-hour": "photo-1509042239860-f550ce710b93",
+            "pour-over": "photo-1495474472287-4d71bcdd2085",
+            "sunrise-origin": "photo-1517701604599-bb29b565090c",
+            "comfort-blend": "photo-1511920170033-f8396924c348"
+          };
+
+          const imageId = productImages[item.id];
+
+          image.src = imageId
+            ? "https://images.unsplash.com/" + imageId + "?auto=format&fit=crop&w=400&q=80"
+            : "";
+
+          const details = document.createElement("div");
+          details.className = "item-details";
+
+          const top = document.createElement("div");
+          top.className = "item-top";
+
+          const description = document.createElement("div");
+
+          const category = document.createElement("span");
+          category.className = "item-category";
+          category.textContent = "AROMA COFFEE";
+
+          const name = document.createElement("h3");
+          name.className = "item-name";
+          name.textContent = item.name;
+
+          const unitPrice = document.createElement("span");
+          unitPrice.className = "item-unit-price";
+          unitPrice.textContent = money(price) + " each";
+
+          description.append(category, name, unitPrice);
+
+          const lineTotal = document.createElement("strong");
+          lineTotal.className = "item-line-total";
+          lineTotal.textContent = money(lineTotalValue(price, quantity));
+
+          top.append(description, lineTotal);
+
+          const bottom = document.createElement("div");
+          bottom.className = "item-bottom";
+
+          const quantityControl = document.createElement("div");
+          quantityControl.className = "quantity-control";
+          quantityControl.setAttribute("aria-label", "Quantity controls");
+
+          const minus = document.createElement("button");
+          minus.type = "button";
+          minus.textContent = "−";
+          minus.setAttribute("aria-label", "Decrease quantity of " + item.name);
+          minus.addEventListener("click", () => changeQuantity(item.id, -1));
+
+          const quantityText = document.createElement("span");
+          quantityText.textContent = quantity;
+
+          const plus = document.createElement("button");
+          plus.type = "button";
+          plus.textContent = "+";
+          plus.setAttribute("aria-label", "Increase quantity of " + item.name);
+          plus.addEventListener("click", () => changeQuantity(item.id, 1));
+
+          quantityControl.append(minus, quantityText, plus);
+
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "remove-button";
+          remove.textContent = "Remove item";
+          remove.addEventListener("click", () => removeItem(item.id));
+
+          bottom.append(quantityControl, remove);
+          details.append(top, bottom);
+          row.append(image, details);
+          cartItems.appendChild(row);
+        });
+
+        subtotalElement.textContent = money(subtotal);
+        totalElement.textContent = money(subtotal);
+      }
+
+      function lineTotalValue(price, quantity) {
+        return price * quantity;
+      }
+
+      function changeQuantity(id, change) {
+        const cart = readCart();
+        const item = cart.find(product => product.id === id);
+
+        if (!item) return;
+
+        const nextQuantity = Number(item.quantity) + change;
+
+        if (nextQuantity <= 0) {
+          removeItem(id);
+          return;
+        }
+
+        item.quantity = nextQuantity;
+
+        if (saveCart(cart)) {
+          renderCart();
+        }
+      }
+
+      function removeItem(id) {
+        const cart = readCart().filter(item => item.id !== id);
+
+        if (saveCart(cart)) {
+          renderCart();
+        }
+      }
+
+      checkoutButton.addEventListener("click", () => {
+        if (readCart().length === 0) return;
+
+        // The demo checkout page will be built next.
+        window.location.href = "checkout.html";
+      });
+
+      renderCart();
+    })();
+  </script>
+
+</body>
+</html>
