@@ -374,6 +374,7 @@ button {
 
 /* HEADER */
 
+
 .site-header {
   height: 82px;
   background: #20140f;
@@ -382,9 +383,12 @@ button {
   justify-content: space-between;
   padding: 0 var(--page-pad);
   color: var(--cream);
-  position: relative;
-  z-index: 20;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
 
 .brand {
   display: flex;
